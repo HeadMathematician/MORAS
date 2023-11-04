@@ -1,0 +1,14 @@
+CHIP Less {
+    IN a[16], b[16];
+    OUT out[1];
+
+    PARTS:
+    TwosComplement(in = b, out = bComp);
+	
+	Add16(a = a, b = bComp, out[0..14] = addResult, out[15] = last);
+	
+	Not(in = last, out = isNegative);
+	
+	Mux(a = true, b = false, sel = isNegative, out = out);
+	
+}

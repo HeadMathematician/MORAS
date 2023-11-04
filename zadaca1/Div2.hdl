@@ -1,0 +1,8 @@
+CHIP Div2
+{
+	IN in[16];
+	OUT out[16];
+
+	PARTS:
+    And16(b[0..15]=true, a[0..14]=in[1..15], a[15] = false, out=out);
+}
