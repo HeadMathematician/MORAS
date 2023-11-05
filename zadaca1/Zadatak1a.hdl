@@ -1,0 +1,8 @@
+CHIP Zadatak1a 
+{
+	IN x[1], y[1];
+	OUT out[1];
+	
+	PARTS:
+	Nand(a = x, b = y, out = out);
+}
