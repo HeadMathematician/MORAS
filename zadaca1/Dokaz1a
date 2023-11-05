@@ -1,0 +1,10 @@
+Require Import Bool.
+
+Notation " ! a ":= (negb a) (at level 1).
+
+Goal forall (x y : bool),
+  (x && !y) || (!x && !y) || (!x && y) = !x || !y.
+
+Proof.
+  intros. now destruct x, y.
+Qed.
