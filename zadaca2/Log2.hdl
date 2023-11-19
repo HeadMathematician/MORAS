@@ -1,0 +1,15 @@
+CHIP Log2{
+	IN in[16];
+	OUT out[16];
+	
+	PARTS:
+	Add16(a[1..15] = false, a[0] = true, b[0..15] = false, out = numberOne);
+	Not16(in = numberOne, out = notNumberOne);
+	Inc16(in = notNumberOne, out = ifNegative);
+	Add16(a[0..15] = false, b[0..3] = true, b[4..15] = false, out = fifteen);
+	Clz(in = in, out = zeroes);
+	TwosComplement(in = zeroes, out = twosComp);
+	Add16(a = fifteen, b = twosComp, out = ifNotNegative);
+	Or(a = false, b = in[15], out = isNegative);
+	Mux16(a = ifNotNegative, b = ifNegative, sel = isNegative, out = out);
+}

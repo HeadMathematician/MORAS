@@ -1,0 +1,44 @@
+CHIP Clz{
+	IN in[16];
+	OUT out[16];
+	
+	PARTS:
+	Not16(in = in, out[14] = notIn2,
+	      out[13] = notIn3,  out[12] = notIn4,  out[11] = notIn5,
+	      out[10] = notIn6,  out[9]  = notIn7,  out[8]  = notIn8,
+	      out[7]  = notIn9,  out[6]  = notIn10, out[5]  = notIn11,
+	      out[4]  = notIn12, out[3]  = notIn13, out[2]  = notIn14,
+	      out[1]  = notIn15, out[0]  = notIn16);
+	
+	And(a = true, b = notIn2, out = and1);
+	And(a = and1, b = notIn3, out = and2);
+	And(a = and2, b = notIn4, out = and3);
+	And(a = and3, b = notIn5, out = and4);
+	And(a = and4, b = notIn6, out = and5);
+	And(a = and5, b = notIn7, out = and6);
+	And(a = and6, b = notIn8, out = and7);
+	And(a = and7, b = notIn9, out = and8);
+	And(a = and8, b = notIn10, out = and9);
+	And(a = and9, b = notIn11, out = and10);
+	And(a = and10, b = notIn12, out = and11);
+	And(a = and11, b = notIn13, out = and12);
+	And(a = and12, b = notIn14, out = and13);
+	And(a = and13, b = notIn15, out = and14);
+	And(a = and14, b = notIn16, out = and15);
+	
+	Add16(a[1..15] = false, a[0] = true, b[0..15] = false, out = sum1);
+	Add16(a[0] = and1, b = sum1, out = sum2);
+	Add16(a[0] = and2, b = sum2, out = sum3);
+	Add16(a[0] = and3, b = sum3, out = sum4);
+	Add16(a[0] = and4, b = sum4, out = sum5);
+	Add16(a[0] = and5, b = sum5, out = sum6);
+	Add16(a[0] = and6, b = sum6, out = sum7);
+	Add16(a[0] = and7, b = sum7, out = sum8);
+	Add16(a[0] = and8, b = sum8, out = sum9);
+	Add16(a[0] = and9, b = sum9, out = sum10);
+	Add16(a[0] = and10, b = sum10, out = sum11);
+	Add16(a[0] = and11, b = sum11, out = sum12);
+	Add16(a[0] = and12, b = sum12, out = sum13);
+	Add16(a[0] = and13, b = sum13, out = sum14);
+	Add16(a[0] = and14, b = sum14, out = out);
+}
